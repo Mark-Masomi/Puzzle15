@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class tile15_2 extends JFrame implements ActionListener {
 
@@ -212,14 +213,35 @@ public class tile15_2 extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                     "congrats you've won this round!");
         }
-        if (e.getSource()==wingame_b){
-            for (JButton b:button_winnerlist) {
+        if (e.getSource() == wingame_b) {
+            Collections.sort(buttonList, new Comparator<JButton>() {
+                @Override
+                public int compare(JButton b1, JButton b2) {
+                    if (b1.getText().isBlank()) {
+                        return 1;
+                    } else if (b2.getText().isBlank()) {
+                        return -1;
+                    } else {
+                        return Integer.parseInt(b1.getText()) - Integer.parseInt(b2.getText());
+                    }
+                }
+            });
+            gamePanel.removeAll();
+            for (JButton b : buttonList) {
                 gamePanel.add(b);
             }
             gamePanel.revalidate();
-            JOptionPane.showMessageDialog(null,
-                    "congrats you've won this round!");
+            gamePanel.repaint();
         }
+
+//        if (e.getSource()==wingame_b){
+//            for (JButton b:button_winnerlist) {
+//                gamePanel.add(b);
+//            }
+//            gamePanel.revalidate();
+//            JOptionPane.showMessageDialog(null,
+//                    "congrats you've won this round!");
+//        }
     }
 
 
