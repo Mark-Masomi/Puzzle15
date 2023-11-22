@@ -8,11 +8,13 @@ import java.util.Comparator;
 
 public class tile15_2 extends JFrame implements ActionListener {
 
+    GameLogic gameLogic=new GameLogic() ;
     JPanel gamePanel = new JPanel();
     JPanel newGamePanel = new JPanel();
     JButton newGameButton = new JButton("Start new game");
 
     JButton wingame_b = new JButton("win the game!");
+
     ArrayList<JButton> buttonList = new ArrayList<>();
 
     ArrayList<JButton> button_winnerlist = new ArrayList<>();
@@ -33,7 +35,7 @@ public class tile15_2 extends JFrame implements ActionListener {
         }
         buttonList.add(new JButton());
         button_winnerlist.addAll(buttonList);
-        shuffleTiles();
+        gameLogic.shuffleTiles();
 
         newGameButton.addActionListener(this);
         wingame_b.addActionListener(this);
@@ -53,42 +55,9 @@ public class tile15_2 extends JFrame implements ActionListener {
 
     }
 
-    public int emptytileIndex () {
-        int index = 0;
-        for (int i = 0; i < buttonList.size(); i++) {
-            if (buttonList.get(i).getText().trim().isBlank()) {
-                index = i;
-            }
 
-        }
-        return index;
-    }
-    public void shuffleTiles() {
-        do {
-            Collections.shuffle(buttonList);
-        } while (!isSolvable());
 
-        for(JButton button:buttonList){
-            gamePanel.add(button);
-        }
-        gamePanel.revalidate();
-    }
-    public boolean isSolvable() {
-        int inversions = 0;
-        for (int i = 0; i < buttonList.size() - 1; i++) {
-            for (int j = i + 1; j < buttonList.size(); j++) {
-                if (!buttonList.get(i).getText().isBlank() && !buttonList.get(j).getText().isBlank() &&
-                        Integer.parseInt(buttonList.get(i).getText()) > Integer.parseInt(buttonList.get(j).getText())) {
-                    inversions++;
-                }
-            }
-        }
-        if (inversions % 2 == 0) {
-            return (emptytileIndex() / 4) % 2 == 1;
-        } else {
-            return (emptytileIndex() / 4) % 2 == 0;
-        }
-    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -99,27 +68,38 @@ public class tile15_2 extends JFrame implements ActionListener {
                 currentTileIndex = i;
         }
         if(e.getSource()==newGameButton){
-            shuffleTiles();
+            gameLogic.shuffleTiles();
         }
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            int currentTileIndex = 0;
+//            JButton pushedButton = (JButton) e.getSource();
+//            for(int i =0; i<buttonList.size(); i++){
+//                if(pushedButton.getText().equals(buttonList.get(i).getText()))
+//                    currentTileIndex = i;
+//            }
+//            if(e.getSource() == newGameButton){
+//                gameLogic.shuffleTiles();
+//            }
 
 
-        if(e.getSource()!=newGameButton&&e.getSource()!=buttonList.get(emptytileIndex())){
+        if(e.getSource()!=newGameButton&&e.getSource()!=buttonList.get(gameLogic.emptytileIndex())){
             int choiceindex=0;
-            if(emptytileIndex()==5||emptytileIndex()==6||emptytileIndex()==9||emptytileIndex()==10){
-                if(e.getSource()==buttonList.get(emptytileIndex()-1)
-                        ||e.getSource()==buttonList.get(emptytileIndex()+1)
-                        ||e.getSource()==buttonList.get(emptytileIndex()-4)
-                        ||e.getSource()==buttonList.get(emptytileIndex()+4)){
-                    Collections.swap(buttonList,currentTileIndex,emptytileIndex());
+            if(gameLogic.emptytileIndex()==5||gameLogic.emptytileIndex()==6||gameLogic.emptytileIndex()==9||gameLogic.emptytileIndex()==10){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-1)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+1)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+4)){
+                    Collections.swap(buttonList,currentTileIndex,gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
                     gamePanel.revalidate();
                 }
             }
-            else if(emptytileIndex()==0){
+            else if(gameLogic.emptytileIndex()==0){
                 if(e.getSource()==buttonList.get(1)||e.getSource()==buttonList.get(4)) {
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -127,10 +107,10 @@ public class tile15_2 extends JFrame implements ActionListener {
                 }
 
             }
-            else if(emptytileIndex()==1||emptytileIndex()==2){
-                if(e.getSource()==buttonList.get(emptytileIndex()-1)||e.getSource()==buttonList.get(emptytileIndex()+1)
-                        ||e.getSource()==buttonList.get(emptytileIndex()+4)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==1||gameLogic.emptytileIndex()==2){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-1)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+1)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+4)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -139,9 +119,9 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==3){
+            else if(gameLogic.emptytileIndex()==3){
                 if(e.getSource()==buttonList.get(2)||e.getSource()==buttonList.get(7)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -150,10 +130,10 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==4||emptytileIndex()==8){
-                if(e.getSource()==buttonList.get(emptytileIndex()-4)||e.getSource()==buttonList.get(emptytileIndex()+4)
-                        ||e.getSource()==buttonList.get(emptytileIndex()+1)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==4||gameLogic.emptytileIndex()==8){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+4)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+1)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -162,10 +142,10 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==7||emptytileIndex()==11){
-                if(e.getSource()==buttonList.get(emptytileIndex()-4)||e.getSource()==buttonList.get(emptytileIndex()+4)
-                        ||e.getSource()==buttonList.get(emptytileIndex()-1)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==7||gameLogic.emptytileIndex()==11){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+4)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()-1)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -174,9 +154,9 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==12){
-                if(e.getSource()==buttonList.get(emptytileIndex()-4)||e.getSource()==buttonList.get(emptytileIndex()+1)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==12){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+1)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -185,10 +165,10 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==13||emptytileIndex()==14){
-                if(e.getSource()==buttonList.get(emptytileIndex()-4)||e.getSource()==buttonList.get(emptytileIndex()+1)
-                        ||e.getSource()==buttonList.get(emptytileIndex()-1)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==13||gameLogic.emptytileIndex()==14){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()+1)
+                        ||e.getSource()==buttonList.get(gameLogic.emptytileIndex()-1)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -197,9 +177,9 @@ public class tile15_2 extends JFrame implements ActionListener {
 
             }
 
-            else if(emptytileIndex()==15){
-                if(e.getSource()==buttonList.get(emptytileIndex()-4)||e.getSource()==buttonList.get(emptytileIndex()-1)){
-                    Collections.swap(buttonList, currentTileIndex, emptytileIndex());
+            else if(gameLogic.emptytileIndex()==15){
+                if(e.getSource()==buttonList.get(gameLogic.emptytileIndex()-4)||e.getSource()==buttonList.get(gameLogic.emptytileIndex()-1)){
+                    Collections.swap(buttonList, currentTileIndex, gameLogic.emptytileIndex());
                     for (JButton button : buttonList) {
                         gamePanel.add(button);
                     }
@@ -234,14 +214,6 @@ public class tile15_2 extends JFrame implements ActionListener {
             gamePanel.repaint();
         }
 
-//        if (e.getSource()==wingame_b){
-//            for (JButton b:button_winnerlist) {
-//                gamePanel.add(b);
-//            }
-//            gamePanel.revalidate();
-//            JOptionPane.showMessageDialog(null,
-//                    "congrats you've won this round!");
-//        }
     }
 
 
