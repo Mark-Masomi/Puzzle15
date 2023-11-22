@@ -5,6 +5,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        tile15 tile15=new tile15();
+        tile15_2 game = new tile15_2();
     }
 }
