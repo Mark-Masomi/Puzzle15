@@ -1,6 +1,6 @@
 
 public class Main {
     public static void main(String[] args) {
-        tile15_2 game = new tile15_2();
+        EventHandling game = new EventHandling();
     }
 }

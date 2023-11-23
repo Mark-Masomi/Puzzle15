@@ -3,8 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class UI extends JFrame {
-    GameLogic gameLogic=new GameLogic() ;
-    tile15_2 tile15_2;
+    GameLogic gameLogic;
+    EventHandling EventHandling;
     JPanel gamePanel = new JPanel();
     JPanel newGamePanel = new JPanel();
     JButton newGameButton = new JButton("Start new game");
@@ -17,7 +17,10 @@ public class UI extends JFrame {
     public JButton placeholder(JButton emptybutton) {
         return emptybutton;
     }
-    public UI(){
+    public UI(EventHandling EventHandling){
+        System.out.println("Running UI constructor");
+        this.EventHandling = EventHandling;
+        this.gameLogic = new GameLogic(this);
         setLayout(new BorderLayout());
         add(gamePanel,BorderLayout.CENTER);
         add(newGamePanel,BorderLayout.NORTH);
@@ -31,11 +34,11 @@ public class UI extends JFrame {
         button_winnerlist.addAll(buttonList);
         gameLogic.shuffleTiles();
 
-        newGameButton.addActionListener(tile15_2);
-        wingame_b.addActionListener(tile15_2);
+        newGameButton.addActionListener(EventHandling);
+        wingame_b.addActionListener(EventHandling);
 
         for(JButton button:buttonList){
-            button.addActionListener(tile15_2);
+            button.addActionListener(EventHandling);
             gamePanel.add(button);
         }
 

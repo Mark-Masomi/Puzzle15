@@ -3,23 +3,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameLogic {
-    JPanel gamePanel = new JPanel();
-    ArrayList<JButton> buttonList = new ArrayList<>();
+    UI ui;
+
+    public GameLogic(UI ui) {
+        this.ui = ui;
+    }
 
     public void shuffleTiles() {
         do {
-            Collections.shuffle(buttonList);
+            Collections.shuffle(ui.buttonList);
         } while (!isSolvable());
 
-        for(JButton button:buttonList){
-            gamePanel.add(button);
+        for(JButton button:ui.buttonList){
+            ui.gamePanel.add(button);
         }
-        gamePanel.revalidate();
+        ui.gamePanel.revalidate();
     }
     public int emptytileIndex () {
         int index = 0;
-        for (int i = 0; i < buttonList.size(); i++) {
-            if (buttonList.get(i).getText().trim().isBlank()) {
+        for (int i = 0; i < ui.buttonList.size(); i++) {
+            if (ui.buttonList.get(i).getText().trim().isBlank()) {
                 index = i;
             }
 
@@ -28,10 +31,10 @@ public class GameLogic {
     }
     public boolean isSolvable() {
         int inversions = 0;
-        for (int i = 0; i < buttonList.size() - 1; i++) {
-            for (int j = i + 1; j < buttonList.size(); j++) {
-                if (!buttonList.get(i).getText().isBlank() && !buttonList.get(j).getText().isBlank() &&
-                        Integer.parseInt(buttonList.get(i).getText()) > Integer.parseInt(buttonList.get(j).getText())) {
+        for (int i = 0; i < ui.buttonList.size() - 1; i++) {
+            for (int j = i + 1; j < ui.buttonList.size(); j++) {
+                if (!ui.buttonList.get(i).getText().isBlank() && !ui.buttonList.get(j).getText().isBlank() &&
+                        Integer.parseInt(ui.buttonList.get(i).getText()) > Integer.parseInt(ui.buttonList.get(j).getText())) {
                     inversions++;
                 }
             }
@@ -44,11 +47,11 @@ public class GameLogic {
     }
 
     public void swapTiles(int currentTileIndex) {
-        Collections.swap(buttonList, currentTileIndex, emptytileIndex());
-        for (JButton button : buttonList) {
-            gamePanel.add(button);
+        Collections.swap(ui.buttonList, currentTileIndex, emptytileIndex());
+        for (JButton button : ui.buttonList) {
+            ui.gamePanel.add(button);
         }
-        gamePanel.revalidate();
+        ui.gamePanel.revalidate();
     }
 
 }
