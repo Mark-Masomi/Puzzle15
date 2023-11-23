@@ -51,11 +51,10 @@ public class UI extends JFrame {
         gamePanel.setLayout(new GridLayout(4,4));
         for(int i = 0;i<15;i++){
             buttonList.add(new JButton(String.valueOf(i+1)));
-            buttonList.get(i).setBackground(panelColor); // Ändrar bakgrundsfärgen till blå
+            buttonList.get(i).setBackground(panelColor); // Ändrar bakgrundsfärgen till grå
             buttonList.get(i).setForeground(tileTextBgColor); // Ändrar textfärgen till vit
-            buttonList.get(i).setFont(gameFont); // Ändrar teckensnittet till
-            //buttonList.get(i).setBorder(BorderFactory.createLineBorder(static_variables.CustomColors.wrong,3));
-            buttonList.get(i).setBorder(BorderFactory.createLineBorder(Color.black,1));
+            buttonList.get(i).setFont(gameFont); // Ändrar teckensnittet till Arial, normal stil och storlek 20
+            buttonList.get(i).setBorder(BorderFactory.createLineBorder(static_variables.CustomColors.btn_Clr_Copy,1));
             //static_variables.CustomColors.btn_Clr_Copy
 
         }
