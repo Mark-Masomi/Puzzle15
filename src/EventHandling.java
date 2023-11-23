@@ -1,4 +1,7 @@
+import static_variables.CustomDialog;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
@@ -136,8 +139,19 @@ public class EventHandling extends JFrame implements ActionListener {
 
         }
         if (ui.buttonList.equals(ui.button_winnerlist)){
+//            JOptionPane.showMessageDialog(null,
+//                    "congrats you've won this round!");
+            //winner Message icon
+            ImageIcon icon = new ImageIcon("src/win.png");
+            Image image = icon.getImage();
+            Image newimg = image.getScaledInstance(60, 60,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+            icon = new ImageIcon(newimg);
+
             JOptionPane.showMessageDialog(null,
-                    "congrats you've won this round!");
+                    "Congratulations! You've won this round!",
+                    "Game Over",
+                    JOptionPane.INFORMATION_MESSAGE,
+                    icon);
         }
         if (e.getSource() == ui.wingame_b) {
             Collections.sort(ui.buttonList, new Comparator<JButton>() {
