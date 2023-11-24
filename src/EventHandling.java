@@ -142,7 +142,7 @@ public class EventHandling extends JFrame implements ActionListener {
 //            JOptionPane.showMessageDialog(null,
 //                    "congrats you've won this round!");
             //winner Message icon
-            ImageIcon icon = new ImageIcon("src/win.png");
+            ImageIcon icon = new ImageIcon("src/Icons/win.png");
             Image image = icon.getImage();
             Image newimg = image.getScaledInstance(60, 60,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
             icon = new ImageIcon(newimg);

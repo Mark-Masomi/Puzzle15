@@ -74,7 +74,7 @@ public class UI extends JFrame {
 
 
         setTitle("Puzzle");
-        setIconImage(new ImageIcon("src/fifteen.png").getImage());
+        setIconImage(new ImageIcon("src/Icons/fifteen.png").getImage());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         setSize(500,500);
