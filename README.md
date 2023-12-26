@@ -17,7 +17,7 @@ Detta projekt är ett Puzzle15-spel skrivet i Java med Swing för GUI. Spelet be
 
 ## Hur man kör spelet
 
-För att köra spelet, kan du klona ner projektet och köra `Main`-klassen. Du kan också ladda ner en JAR-fil från [releases](https://github.com/Mark-Masomi/Puzzle15/releases/tag/v1.0) och köra den med `java -jar puzzle15.jar`.
+För att köra spelet, kan du klona ner projektet och köra `Main`-klassen. Du kan också ladda ner en JAR-fil från [releases](https://github.com/Mark-Masomi/Puzzle15/releases/tag/v1.0) och dubbelklicka på filen (kräver att JDK är installerat på din dator).
 
 ## Framtida arbete
 
