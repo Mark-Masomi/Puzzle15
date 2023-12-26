@@ -34,7 +34,6 @@ public class UI extends JFrame {
         return emptybutton;
     }
     public UI(EventHandling EventHandling){
-        System.out.println("Running UI constructor");
         this.EventHandling = EventHandling;
         this.gameLogic = new GameLogic(this);
         newGameButton.setFont(topButtonFont);// Ändrar teckensnittet till Arial, normal stil och storlek 20
