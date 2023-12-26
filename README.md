@@ -17,7 +17,7 @@ Detta projekt är ett Puzzle15-spel skrivet i Java med Swing för GUI. Spelet be
 
 ## Hur man kör spelet
 
-För att köra spelet, kör `Main`-klassen.
+För att köra spelet, kan du klona ner projektet och köra `Main`-klassen. Du kan också ladda ner en JAR-fil från [releases]() och köra den med `java -jar puzzle15.jar`.
 
 ## Framtida arbete
 
