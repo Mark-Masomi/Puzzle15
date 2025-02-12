@@ -1,25 +1,90 @@
-# Puzzle15 Game
+# 🧩 Puzzle 15 Game
 
-## Beskrivning
+## 📖 Description
+**Puzzle 15** is a classic sliding puzzle game written in **Java** with **Swing** for the graphical user interface (GUI).  
+The game consists of a **4x4 grid** with **15 numbered tiles** and an empty space.  
+The goal is to **arrange the tiles in numerical order** by sliding them into the empty space.
 
-Detta projekt är ett Puzzle15-spel skrivet i Java med Swing för GUI. Spelet består av en 4x4-ruta med 15 numrerade brickor och en tom ruta. Målet med spelet är att ordna brickorna i numerisk ordning genom att flytta brickorna in i den tomma rutan.
+---
 
-## Funktioner
+## 🎮 Features
 
-- **Nytt spel**: Blandar om brickorna för att starta ett nytt spel.
-- **Vinn spelet**: Ordna brickorna i numerisk ordning för att vinna spelet.
+✅ **New Game** – Shuffles the tiles and starts a new round.  
+✅ **Win Detection** – The game automatically checks if the tiles are in the correct order.  
+✅ **Interactive GUI** – Simple and intuitive user interface built with Swing.  
 
-## Klasser
+---
 
-- `EventHandling`: Hanterar alla händelser som genereras av användaren, till exempel knapptryckningar.
-- `GameLogic`: Innehåller all logik för spelet, till exempel att blanda om brickorna och kontrollera om användaren har vunnit.
-- `UI`: Skapar och hanterar användargränssnittet för spelet.
+## 🛠 Classes and Structure
 
-## Hur man kör spelet
+📌 **`EventHandling`** – Manages all user-generated events, such as button clicks.  
+📌 **`GameLogic`** – Contains the game mechanics, including shuffling tiles and checking for a win.  
+📌 **`UI`** – Creates and manages the graphical user interface for the game.  
 
-För att köra spelet, kan du klona ner projektet och köra `Main`-klassen. Du kan också ladda ner en JAR-fil från [releases](https://github.com/Mark-Masomi/Puzzle15/releases/tag/v1.0) och dubbelklicka på filen (kräver att JDK är installerat på din dator).
+---
 
-## Framtida arbete
+## 🚀 How to Run the Game
 
-- Konvertera spelet till en webbapplikation med Spring Boot och Thymeleaf.
-- Lägg till fler funktioner, till exempel en timer och en räknare för antalet drag.
+### 🔹 Option 1: Run from Source Code
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mark-Masomi/Puzzle15.git
+   cd Puzzle15
+
+2. Compile and run:
+
+javac -d bin src/com/company/*.java
+java -cp bin com.company.Main
+
+
+
+🔹 Option 2: Run with a JAR File
+
+1. Download the JAR file from Releases.
+
+
+2. Double-click the JAR file to start the game.
+(Note: JDK/JRE must be installed on your computer.)
+
+
+
+
+---
+
+🔮 Future Enhancements
+
+🛠 Convert the game into a web application using Spring Boot and Thymeleaf.
+⏳ Add a timer – Players can challenge themselves against the clock.
+📊 Implement a move counter – Track how many moves are needed to solve the puzzle.
+
+
+---
+
+🤝 Contributing
+
+🎯 Want to improve the game? Follow these steps:
+
+1. Fork the repository
+
+
+2. Create a feature branch
+
+
+3. Submit a pull request
+
+
+
+
+---
+
+📄 License
+
+This project is licensed under the MIT License.
+
+
+---
+
+📞 Contact
+
+For any questions, feel free to reach out:
+📧 markmasomi@outlook.com
